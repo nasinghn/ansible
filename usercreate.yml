@@ -1,0 +1,21 @@
+---
+- hosts: web
+  remote_user: root
+  vars:
+    name:
+      - ansible
+  tasks:
+    - name: create ansible user for managing host
+      user: name=ansible comment="Ansible User" group=ansible
+      password: '$6$U2d4B5P0jqGnKa.J$T1M3prG0iWaZbGCHNUEjcHnyOgVKYQVHhWJ88NTC8J0kwAieHaMZUWdthJH4SRM2YE.iIIftJ14G.uoffumhF.'
+
+    - name: give ansible user sudo rights
+      lineinfile: dest=/etc/sudoers
+                 state=present
+                 regexp='^ansible ALL\='
+                 line='ansible ALL=(ALL) NOPASSWD:ALL'
+                 validate='visudo -cf %s'
+    - name: Restart sshd
+      service:
+                  name: sshd
+                  state: restarted
