@@ -27,8 +27,8 @@
       async: 0
       poll: 0
       ignore_errors: true
-    - name: Pause for 180 seconds
-      pause: minutes=3
+    - name: Pause for 60 seconds
+      pause: minutes=1
     - name: wait for the server to restart
       local_action: wait_for host={{ inventory_hostname }}
                     port=22
