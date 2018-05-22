@@ -1,0 +1,9 @@
+- hosts: yoga
+  tasks:
+    - copy:
+        src: /etc/ansible/rollback_rscd_agent.expect
+        dest: /tmp
+        owner: osadmin 
+        group: osadmin
+        mode: 0744
+        local_action: command  sh /etc/ansible/rollback_rscd_agent.expect
