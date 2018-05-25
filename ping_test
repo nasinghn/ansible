@@ -1,16 +1,16 @@
 bold=`tput bold`
 normal=`tput sgr0`
-echo "Enter the IP address"
-for i in `cat`
+#echo "Enter the IP address"
+for i in `cat nonrechab_host`
 do
 if [ ! -z $i ]
 then
 ping -c 1 $i
 if [ $? -eq 0 ] 
 then
-echo " $bold Server is online $normal "
+echo " $bold Server $i is online $normal "
 else 
-echo " $bold Server is offline $normal "
+echo " $bold Server $i is offline $normal "
 fi
 else 
 echo "Enter Correct IP"

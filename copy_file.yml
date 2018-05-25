@@ -1,9 +1,11 @@
-- hosts: yoga
+---
+- name: Transfer and execute a script.
+  hosts: 10.238.23.78
+  user: osadmin
+#  become: yes
   tasks:
-    - copy:
-        src: /etc/ansible/rollback_rscd_agent.expect
-        dest: /tmp
-        owner: osadmin 
-        group: osadmin
-        mode: 0744
-        local_action: command  sh /etc/ansible/rollback_rscd_agent.expect
+#     - name: Transfer the script
+#       copy: src=/etc/ansible/rollback_rscd_agent.expect dest=/tmp mode=0777
+
+     - name: Execute the script
+       local_action: command ./tmp/rollback_rscd_agent.expect

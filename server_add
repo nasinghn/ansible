@@ -1,5 +1,9 @@
 ####author: Narender Singh
-for j in `cat /etc/ansible/server_name`
+echo "Enter the Servername/IP you want to add:"
+read server
+{
+for j in $server
 do
 ssh-copy-id -i /home/osadmin/.ssh/id_rsa.pub osadmin@$j
 done
+}
